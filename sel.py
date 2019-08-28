@@ -1,5 +1,8 @@
 import mysql.connector
+from prettytable import PrettyTable
 
+pt = PrettyTable()
+pt.field_names = ["id", "name", "date", "price", "share"]
 
 def select_data():
 	mydb = mysql.connector.connect(
@@ -15,4 +18,6 @@ def select_data():
 	myresult = db.fetchall()
 
 	for x in myresult:
-  		print(x)
+  		pt.add_row(x)
+		
+	print(pt)
